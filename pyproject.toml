@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "groncyber_generator"
+description = "Static file generator for blog.groncyber.com"
+readme = "README.md"
+license = {file = "LICENSE"}
+dynamic = ['version']
+requires-python = ">= 3.9"
+authors = [
+    {name = "Gabriele Ron", email = "developer@groncyber.com"}
+]
+maintainers = [
+    {name = "Gabriele Ron", email = "developer@groncyber.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Games/Entertainment :: Simulation"
+]
+dependencies = [
+    'Markdown'
+]
+
+[project.optional-dependencies]
+tests = [
+    "flake8",
+    "pytest"
+]
+
+[project.urls]
+Repository = "https://github.com/Macr0Nerd/mn_blog_generator"
+
+[project.scripts]
+groncyber-generator = "groncyber_generator.__main__:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "groncyber_generator.__version__"}
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+pythonpath = [
+    "src",
+    "examples"
+]
+testpaths = [
+    "tests"
+]
