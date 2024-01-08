@@ -10,4 +10,4 @@ development so everything is automatically generated with markdown, python, and 
 collected is whatever connection info is logged. there are a few things i wanna add so eventually a bit of the evil
 language may be added, but so far there's none here. you can see my todo list here:
 
-* [ ] add rss feed
+[ ] add rss feed
