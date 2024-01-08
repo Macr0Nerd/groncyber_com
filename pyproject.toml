@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "groncyber_generator"
-description = "Static file generator for blog.groncyber.com"
+description = "Static file generator for groncyber.com"
 readme = "README.md"
 license = {file = "LICENSE"}
 dynamic = ['version']
