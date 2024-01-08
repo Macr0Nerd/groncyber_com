@@ -41,12 +41,13 @@ def main() -> int:
             base_root = root
 
         relative_root = root.replace(base_root, '')
+        relative_dir = os.path.join(args['webroot'], relative_root)
 
         file_map = {}
 
         for file in files:
             src_file = os.path.join(root, file)
-            dst_file = os.path.join(args['webroot'], relative_root, file.replace('.md', '.html'))
+            dst_file = os.path.join(relative_dir, file.replace('.md', '.html'))
 
             if not os.path.exists(dst_file) or args['force']:
                 with open(src_file, 'r') as f:
@@ -61,6 +62,9 @@ def main() -> int:
 
                 file_map[title] = os.path.join(relative_root, file.replace('.md', '.html'))
 
+                if not os.path.exists(relative_dir):
+                    os.mkdir(relative_dir)
+
                 with open(dst_file, 'w') as f:
                     f.write(template.format(title=title, content=content))
 
@@ -70,7 +74,7 @@ def main() -> int:
                 content += f'<li><a href="{path}" target="_self">{title}</a></li>\n'
             content += '</ul>'
 
-            with open(os.path.join(args['webroot'], relative_root, 'index.html'), 'w') as f:
+            with open(os.path.join(relative_dir, 'index.html'), 'w') as f:
                 f.write(template.format(title='init 0', content=content))
 
     return 0
