@@ -35,10 +35,16 @@ nav {
     }
 }
 
+section {
+    width: 80%;
+    margin: auto 10%;
+}
+
 .centered-wrapper {
     position: relative;
     text-align: center;
 }
+
 .centered-wrapper:before {
     content: "";
     position: relative;
@@ -47,6 +53,7 @@ nav {
     height: 100%;
     vertical-align: middle;
 }
+
 .centered-content {
     display: inline-block;
     vertical-align: middle;
