@@ -38,6 +38,12 @@ nav {
 section {
     width: 80%;
     margin: auto 10%;
+
+    pre {
+        text-align: left;
+        color: whitesmoke;
+        overflow: scroll;
+    }
 }
 
 .centered-wrapper {
