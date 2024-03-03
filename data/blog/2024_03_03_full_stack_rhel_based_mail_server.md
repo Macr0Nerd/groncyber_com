@@ -106,11 +106,16 @@ $ echo 'smtpd_tls_auth_only = yes' | tee -a /etc/postfix/main.cf
 $ echo 'smtpd_sasl_auth_enable = yes' | tee -a /etc/postfix/main.cf
 $ echo 'broken_sasl_auth_clients = yes' | tee -a /etc/postfix/main.cf
 $ echo 'smtpd_helo_required = yes' | tee -a /etc/postfix/main.cf
-$ echo 'smtpd_client_restrictions = reject_rbl_client zen.spamhaus.org, reject_rhsbl_reverse_client dbl.spamhaus.org, reject_rhsbl_helo dbl.spamhaus.org, reject_rhsbl_sender dbl.spamhaus.org' | tee -a /etc/postfix/main.cf
 $ echo 'smtpd_sender_restrictions = reject_non_fqdn_sender, reject_unknown_sender_domain, reject_sender_login_mismatch' | tee -a /etc/postfix/main.cf
 $ echo 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination' | tee -a /etc/postfix/main.cf
 $ echo 'smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination' | tee -a /etc/postfix/main.cf
 $ echo 'smtpd_data_restrictions = reject_unauth_pipelining' | tee -a /etc/postfix/main.cf
+```
+
+See conclusion before setting the following
+
+```
+$ echo 'smtpd_client_restrictions = reject_rbl_client zen.spamhaus.org, reject_rhsbl_reverse_client dbl.spamhaus.org, reject_rhsbl_helo dbl.spamhaus.org, reject_rhsbl_sender dbl.spamhaus.org' | tee -a /etc/postfix/main.cf
 ```
 
 Add this if you implement Dovecot quotas (not covered here)
@@ -372,7 +377,7 @@ If you build this mail server, you will notice that you need to disable `smtpd_c
 This is because spamhaus is a bit fucky wucky about how you use their stuff so I need to figure that out.
 
 Additionally, I need to figure out MTA-STS and DANE/TLSA.
-These are not in here.
+These are not in here, and neither was Fail2Ban.
 As such, there will eventually be a follow up guide once I get to those.
 MTA-STS seems easy to setup on the receiving side, but it requires a webserver for sending.
 Not ideal, and a lot more work than this has already been.
